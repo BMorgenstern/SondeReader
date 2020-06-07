@@ -170,7 +170,7 @@ public:
     {
         return nullptr != this->port;
     }
-    bool sendSerial(const char*);
+    bool sendSerial(QString);
     void newSession();
     void hideAllSensorSpecificWidgets();
     void toggleSensorSpecificWidgets(SensorSpecific::SensorType);
@@ -187,7 +187,7 @@ public:
 
     }
     signals:
-        void writeToSonde(const char*);
+        void writeToSonde(QString);
         //void serialRead(unsigned long);
         //void doneWithSerial();
 };

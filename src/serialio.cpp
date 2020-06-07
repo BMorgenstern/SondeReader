@@ -2,14 +2,14 @@
 
 SerialIO::SerialIO()
 {
-    this->messages = QQueue<const char*>();
+    this->messages = QQueue<QString>();
     this->setReading(false);
     buffer = new QByteArray();
 }
 
 SerialIO::SerialIO(const QSerialPortInfo& info) : QSerialPort(info)
 {
-    this->messages = QQueue<const char*>();
+    this->messages = QQueue<QString>();
     this->setReading(false);
     buffer = new QByteArray();
 }
@@ -34,12 +34,13 @@ void SerialIO::serialRead()
         {
             //newline character specifies end of message
             //qDebug() << *buffer;
+            this->setReading(false);
             emit doneReading(QString(*buffer));
             buffer->clear();
-            this->setReading(false);
+
         }
 }
-void SerialIO::serialWrite(const char* message)
+void SerialIO::serialWrite(QString message)
 {
 #ifndef TESTING_SERIALIO
     while(this->reading)
@@ -47,7 +48,7 @@ void SerialIO::serialWrite(const char* message)
         qDebug() << "Waiting....";
     } // wait for reading to finish..
     qDebug() << "Writing : " << message;
-    this->write(message);
+    this->write(message.toStdString().c_str());
     emit doneWriting();
 #else
     qDebug() << ((reading) ? "Reading..." : "Not reading!");

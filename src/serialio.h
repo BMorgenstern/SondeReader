@@ -14,7 +14,7 @@
 class SerialIO : public QSerialPort
 {
     Q_OBJECT
-    QQueue<const char*> messages;
+    QQueue<QString> messages;
     std::atomic_bool reading;
 public:
     QThread* worker;
@@ -29,7 +29,7 @@ public:
 private slots:
         void sDoneReading();
         void serialRead();
-        void serialWrite(const char*);
+        void serialWrite(QString);
 signals:
         void doneReading(QString);
         void doneWriting();

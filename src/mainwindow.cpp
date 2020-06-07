@@ -129,7 +129,7 @@ MainWindow::MainWindow(QWidget *parent) :
             port->setParity(QSerialPort::NoParity);
             port->setStopBits(QSerialPort::OneStop);
             port->setFlowControl(QSerialPort::NoFlowControl);
-            QObject::connect(this, SIGNAL(writeToSonde(const char*)), port, SLOT(serialWrite(const char*)));
+            QObject::connect(this, SIGNAL(writeToSonde(QString)), port, SLOT(serialWrite(QString)));
             QObject::connect(port, SIGNAL(doneReading(QString)), this, SLOT(fun1(QString)));
         }
 
@@ -363,7 +363,7 @@ void MainWindow::on_serialSend_clicked()
 }
 
 
-bool MainWindow::sendSerial(const char* data)
+bool MainWindow::sendSerial(QString data)
 {
     if(nullptr != port)
     {
@@ -376,17 +376,15 @@ bool MainWindow::sendSerial(const char* data)
 
 void MainWindow::on_readFrom_clicked()
 {
-    const char* read = "r";
     if(nullptr != port)
     {
-        this->sendSerial(read);
+        this->sendSerial("r");
     }
 }
 
 void MainWindow::newSession()
 {
-    const char* newsession = "newsession";
-    sendSerial(newsession);
+    sendSerial("newsession");
 }
 
 void MainWindow::changeMode(SondeMode::ModeSelection mode)
@@ -413,10 +411,9 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     if (index == 0) index = 4;
 //    if (index == 4) index = 5;
     qDebug() << "Mode = " << index;
-    std::ostringstream oss;
-    oss << index;
+
 //    this->newSession();
-    this->sendSerial(oss.str().c_str());
+    this->sendSerial(QString::number(index));
     this->ReadSerial();
 //    qDebug() << oss.str().c_str();
 }
@@ -430,10 +427,8 @@ void MainWindow::CalCommand(QString sensor, QString command, QString args = "", 
     {
         cal_command += ","+args;
     }
-    sendSerial(cal_command.toStdString().c_str());
-    while(!port->waitForBytesWritten(-1));
-    while(!port->waitForReadyRead(-1));
-    //QString data = (ui->currSensor->currentText() + "_data:");
+    sendSerial(cal_command);
+
     QString data = "_data:";
     int start = buffer.toStdString().find(data.toStdString().c_str()) + data.length();
     int len = buffer.indexOf('\r', start)-start;
