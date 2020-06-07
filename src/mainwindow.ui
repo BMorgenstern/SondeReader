@@ -1,0 +1,1757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>559</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>511</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Data</string>
+     </attribute>
+     <widget class="QLineEdit" name="serialData">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>300</y>
+        <width>113</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QTimeEdit" name="time">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>250</y>
+        <width>118</width>
+        <height>27</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="serialSend">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>300</y>
+        <width>121</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Send to Arduino</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>29</x>
+        <y>19</y>
+        <width>351</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1">
+        <widget class="QLCDNumber" name="sg_lcd">
+         <property name="toolTip">
+          <string>SG</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLCDNumber" name="ph_lcd">
+         <property name="toolTip">
+          <string>pH</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLCDNumber" name="tds_lcd">
+         <property name="toolTip">
+          <string>TDS</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLCDNumber" name="sal_lcd">
+         <property name="toolTip">
+          <string>SAL</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLCDNumber" name="orp_lcd">
+         <property name="toolTip">
+          <string>ORP</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLCDNumber" name="sat_lcd">
+         <property name="toolTip">
+          <string>SAT</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLCDNumber" name="do_lcd">
+         <property name="toolTip">
+          <string>DO</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLCDNumber" name="rtd_lcd">
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>RTD</string>
+         </property>
+         <property name="whatsThis">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLCDNumber" name="ec_lcd">
+         <property name="contextMenuPolicy">
+          <enum>Qt::DefaultContextMenu</enum>
+         </property>
+         <property name="toolTip">
+          <string>EC</string>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
+         <property name="accessibleDescription">
+          <string>LoHEl</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="readFrom">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>250</y>
+        <width>99</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Get Data</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="dataReadOut">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>350</y>
+        <width>351</width>
+        <height>101</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Calibration</string>
+     </attribute>
+     <widget class="QComboBox" name="currSensor">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>85</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="maxVisibleItems">
+       <number>10</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>EC</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ORP</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>pH</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>DO</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>RTD</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="sensorName">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>6</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Electrical Conductivity</string>
+      </property>
+     </widget>
+     <widget class="QTabWidget" name="calOptions">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>501</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Calibrate</string>
+       </attribute>
+       <widget class="QPushButton" name="calDry">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>30</y>
+          <width>221</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Dry Calibration</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="calClear">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>190</y>
+          <width>178</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Clear Calibration Data</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="calN">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>70</y>
+          <width>91</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Calibrate</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="calTo">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>69</width>
+          <height>27</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exportCal">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>150</y>
+          <width>171</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Export Calibration Data</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="calInfo">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>110</y>
+          <width>171</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Calibration Info</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="hiloCal">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>70</y>
+          <width>221</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QDoubleSpinBox" name="loCalVal">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>69</width>
+           <height>27</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="loCal">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>0</y>
+           <width>141</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Low-End Calibrate</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="hiCal">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>40</y>
+           <width>141</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>High-End Calibrate</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="hiCalVal">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>40</y>
+           <width>69</width>
+           <height>27</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="sensorRead_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>171</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Get Reading</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="midCal">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>150</y>
+          <width>221</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QDoubleSpinBox" name="midCalVal">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>69</width>
+           <height>27</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="midCalButton">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>0</y>
+           <width>141</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Midpoint Calibrate</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_8">
+       <attribute name="title">
+        <string>Data</string>
+       </attribute>
+       <widget class="QPushButton" name="sensorRead">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>121</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Read</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="probeOptions">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>50</y>
+          <width>241</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QPushButton" name="currProbe">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>10</y>
+           <width>121</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Current Probe</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="setProbe">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>40</y>
+           <width>121</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Set Probe</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="probeVal">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>85</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>K 0.1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>K 1.0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>K 10</string>
+          </property>
+         </item>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="probeSlope">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>210</y>
+          <width>99</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Probe Slope</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="tempOptions">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>241</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QPushButton" name="currTemp">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>221</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Current Temperature</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="temperatureVal">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>40</y>
+           <width>91</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <double>-126.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>1254.000000000000000</double>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="setTemp">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>40</y>
+           <width>121</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Set Temperature</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="pressureOptions">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>50</y>
+          <width>241</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QPushButton" name="currPressure">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>221</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Current Pressure</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="pressureVal">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>40</y>
+           <width>91</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <double>-126.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>1254.000000000000000</double>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="setPressure">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>40</y>
+           <width>121</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Set Pressure</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="salinity">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>170</y>
+          <width>241</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QPushButton" name="setProbe_2">
+         <property name="geometry">
+          <rect>
+           <x>140</x>
+           <y>10</y>
+           <width>91</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Set Salinity</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="pptSal">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>10</y>
+           <width>61</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PPT</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="currSal">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>40</y>
+           <width>231</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Current Salinity</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="salVal">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>61</width>
+           <height>27</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_6">
+       <attribute name="title">
+        <string>Options</string>
+       </attribute>
+       <widget class="QGroupBox" name="ecOptions">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>191</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QRadioButton" name="tdsO">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>117</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TDS</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="ecO">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>117</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>EC</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="sgO">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>10</y>
+           <width>117</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SG</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="sO">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>30</y>
+           <width>117</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Sal</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="rtdOptions">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>90</y>
+          <width>471</width>
+          <height>161</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QRadioButton" name="tempC">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>117</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>C</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="tempF">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>10</y>
+           <width>117</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>F</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="tempK">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>10</y>
+           <width>117</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>K</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="rtdTemp">
+         <property name="geometry">
+          <rect>
+           <x>170</x>
+           <y>10</y>
+           <width>131</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Get Temperature</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="dataLoggerInterval">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>40</y>
+           <width>48</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="setDLI">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>40</y>
+           <width>181</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Set Data Logger Interval</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="disableDL">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>70</y>
+           <width>150</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Disable Data Logger</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="getDLI">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>161</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Data Logger Interval</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="memoryRecall">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>110</y>
+           <width>121</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Memory Recall</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="memoryLocation">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>110</y>
+           <width>191</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Display Memory location</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="memoryClear">
+         <property name="geometry">
+          <rect>
+           <x>350</x>
+           <y>110</y>
+           <width>111</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Clear Memory</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="doOptions">
+        <property name="geometry">
+         <rect>
+          <x>99</x>
+          <y>30</y>
+          <width>121</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <widget class="QRadioButton" name="doO">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>0</y>
+           <width>117</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>DO</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="satO">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>117</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SAT</string>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>Info</string>
+       </attribute>
+       <widget class="QPushButton" name="sensorStatus">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>130</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Status</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="sensorInfo">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>90</y>
+          <width>121</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Device Info</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_7">
+       <attribute name="title">
+        <string>Settings</string>
+       </attribute>
+       <widget class="QPushButton" name="sensorFactory">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>10</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Factory</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="sensorSleep">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>50</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Sleep</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="led_on">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>117</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>LED On</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="changeSettings">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>200</y>
+          <width>121</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Submit Changes</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="findSensor">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>90</y>
+          <width>121</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Find Sensor</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="var1">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>110</y>
+          <width>99</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>330</y>
+        <width>511</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>509</width>
+         <height>149</height>
+        </rect>
+       </property>
+       <widget class="QTextEdit" name="readOut">
+        <property name="geometry">
+         <rect>
+          <x>3</x>
+          <y>0</y>
+          <width>501</width>
+          <height>151</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_10">
+     <attribute name="title">
+      <string>Continous</string>
+     </attribute>
+     <widget class="QTextBrowser" name="contReadOut">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>220</y>
+        <width>471</width>
+        <height>241</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>441</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Continous Reading mode&lt;/span&gt;&lt;/p&gt;&lt;p&gt;This allows the Sonde to read all the sensor values at a fixed time interval &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>150</y>
+        <width>474</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Please enter the time interval:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>s</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Submit</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_11">
+     <attribute name="title">
+      <string>Custom</string>
+     </attribute>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>461</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Custom Reading mode&lt;/span&gt;&lt;/p&gt;&lt;p&gt;This allows the Sonde to read all the sensor values at different time interval &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>370</y>
+        <width>481</width>
+        <height>91</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>330</y>
+        <width>99</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Read</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>120</y>
+        <width>457</width>
+        <height>196</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Temperature </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Electrical Conductivity</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Oxidation Reduction Potential</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>pH</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Dissolved Oxygen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Pressure</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLineEdit" name="temp_interval"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="ec_interval"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="orp_interval"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="ph_interval"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="do_interval"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="pressure_interval"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <item>
+          <widget class="QPushButton" name="temp_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ec_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="orp_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ph_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="do_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pressure_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <zorder>layoutWidget</zorder>
+     <zorder>label_5</zorder>
+     <zorder>textBrowser_3</zorder>
+     <zorder>pushButton_2</zorder>
+    </widget>
+    <widget class="QWidget" name="tab_12">
+     <attribute name="title">
+      <string>LoRA</string>
+     </attribute>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>461</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;LoRA Configuration mode&lt;/span&gt;&lt;/p&gt;&lt;p&gt;This allows to set the settings for the LoRA communication chip on the Sonde board&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>481</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>Frequency (Hz) :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_14">
+           <property name="text">
+            <string>Coding Rate :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_15">
+           <property name="text">
+            <string>Spreading Factor :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_16">
+           <property name="text">
+            <string>Power :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_17">
+           <property name="text">
+            <string>Bandwidth :</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLineEdit" name="freq_val"/>
+         </item>
+         <item>
+          <widget class="QComboBox" name="coding_rate_val">
+           <item>
+            <property name="text">
+             <string>4/5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4/6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4/7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4/8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="spread_factor_val">
+           <item>
+            <property name="text">
+             <string>sf7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>sf8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>sf9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>sf10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>sf11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>sf12</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="power_val">
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>10</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>11</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>12</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>14</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>15</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>17</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>20</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="bandwidth_val">
+           <item>
+            <property name="text">
+             <string>125</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>250</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>500</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QPushButton" name="freq_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="coding_rate_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="spreading_factor_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="power_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="bandwidth_submit">
+           <property name="text">
+            <string>Submit</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Help</string>
+     </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>411</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Coming Soon</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_9">
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>559</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
