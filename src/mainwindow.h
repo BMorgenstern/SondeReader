@@ -38,8 +38,7 @@ public:
 
 private slots:
     void ReadSerial();
-    void fun1();
-    void fun2();
+    void fun1(QString);
     void on_serialSend_clicked();
 
     void on_readFrom_clicked();
@@ -188,7 +187,7 @@ public:
 
     }
     signals:
-        void writeToSonde(QString);
+        void writeToSonde(const char*);
         //void serialRead(unsigned long);
         //void doneWithSerial();
 };

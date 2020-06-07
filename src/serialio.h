@@ -14,20 +14,22 @@
 class SerialIO : public QSerialPort
 {
     Q_OBJECT
-    QQueue<QString> messages;
+    QQueue<const char*> messages;
     std::atomic_bool reading;
 public:
     QThread* worker;
+    QByteArray* buffer;
     inline void setReading(bool isReading)
     {
         this->reading = isReading;
     }
     SerialIO();
+    ~SerialIO();
     SerialIO(const QSerialPortInfo&);
 private slots:
         void sDoneReading();
         void serialRead();
-        void serialWrite(QString);
+        void serialWrite(const char*);
 signals:
         void doneReading(QString);
         void doneWriting();

@@ -10,15 +10,11 @@
 //#define CONNECT_TO_ARDUINO
 
 
-void MainWindow::fun1()
+void MainWindow::fun1(QString message)
 {
-    qDebug() << "Thread call completed and received in MainWindow";
+    qDebug() << message;
 }
 
-void MainWindow::fun2()
-{
-    qDebug() << "Finished Executing";
-}
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -133,7 +129,8 @@ MainWindow::MainWindow(QWidget *parent) :
             port->setParity(QSerialPort::NoParity);
             port->setStopBits(QSerialPort::OneStop);
             port->setFlowControl(QSerialPort::NoFlowControl);
-            //QObject::connect(port, SIGNAL(readyRead()), this, SLOT(ReadSerial()));
+            QObject::connect(this, SIGNAL(writeToSonde(const char*)), port, SLOT(serialWrite(const char*)));
+            QObject::connect(port, SIGNAL(doneReading(QString)), this, SLOT(fun1(QString)));
         }
 
         else
@@ -370,8 +367,9 @@ bool MainWindow::sendSerial(const char* data)
 {
     if(nullptr != port)
     {
-        port->write(data);
-        qDebug() << data;
+        //port->write(data);
+        //qDebug() << data;
+        emit writeToSonde(data);
     }
     return false;
 }
@@ -381,7 +379,7 @@ void MainWindow::on_readFrom_clicked()
     const char* read = "r";
     if(nullptr != port)
     {
-        port->write(read);
+        this->sendSerial(read);
     }
 }
 
@@ -410,8 +408,8 @@ void MainWindow::on_tabWidget_currentChanged(int index)
         this->newSession();
     }
     //port->write("newsession");
-    while(!port->waitForBytesWritten(-1));
-    while(!port->waitForReadyRead(-1));
+    //while(!port->waitForBytesWritten(-1));
+    //while(!port->waitForReadyRead(-1));
     if (index == 0) index = 4;
 //    if (index == 4) index = 5;
     qDebug() << "Mode = " << index;
