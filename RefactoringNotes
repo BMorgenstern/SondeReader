@@ -1,0 +1,5 @@
+The following methods' code needs to be refactored, most likely into a Parsing object,
+and parsed separately  
+
+MainWindow::CalCommand
+MainWindow::ReadSerial

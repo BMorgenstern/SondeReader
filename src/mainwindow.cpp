@@ -115,10 +115,16 @@ MainWindow::MainWindow(QWidget *parent) :
         port->moveToThread(port->worker);
         port->worker->start(QThread::HighPriority);
 
+
+        QObject::connect(port, SIGNAL(readyRead()), port, SLOT(serialRead()));
+        QObject::connect(port, SIGNAL(readChannelFinished()), port, SLOT(sDoneReading()));
+
+
+        MakeContact:
+
         if(port->open(QSerialPort::ReadWrite))
         {
-            QObject::connect(port, SIGNAL(readyRead()), port, SLOT(serialRead()));
-            QObject::connect(port, SIGNAL(readChannelFinished()), port, SLOT(sDoneReading()));
+
                         
             #ifdef CONNECT_TO_ARDUINO
             port->setBaudRate(ARDUINO_BAUD);
@@ -136,9 +142,20 @@ MainWindow::MainWindow(QWidget *parent) :
         else
         {
             QMessageBox error;
-            error.setText("Found, but the port is busy");
-            error.exec();
-            //this->~MainWindow();
+            error.setText("Found, but the port is busy.\nPlease disconnect from other applications and try again.");
+            error.setStandardButtons(QMessageBox::Retry | QMessageBox::Cancel);
+
+            int status = error.exec();
+
+            if(QMessageBox::Retry == status)
+            {
+                goto MakeContact;
+            }
+            else
+            {
+                this->port = nullptr;
+                return;
+            }
 
         }
 
@@ -221,9 +238,14 @@ MainWindow::~MainWindow()
     delete ui;
     if(nullptr != port)
     {
-        delete port->worker;
+        if(port->worker)
+        {
+            port->worker->quit();
+            while(!port->worker->isFinished()); // delay until worker finishes
+            delete port->worker;
+        }
         port->close();
-
+        port = nullptr;
     }
 
 }
@@ -468,8 +490,9 @@ void MainWindow::CalCommand(QString sensor, QString command, QString args = "", 
     }
     else
     {
-        s.setText("Something went wrong");
-        s.exec();
+        //s.setText("Something went wrong");
+        //s.exec();
+        //Uncomment Later
     }
 
 
