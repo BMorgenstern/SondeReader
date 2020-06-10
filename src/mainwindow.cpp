@@ -13,6 +13,22 @@
 void MainWindow::fun1(QString message)
 {
     qDebug() << message;
+    //this->ui->readOut->append(sensor + " : " +retData);
+}
+
+void MainWindow::calRes(QString result)
+{
+    QString res;
+    auto dlist = result.split('\r');
+    for(int counter = 0; counter < dlist.length(); counter++) {
+       res += dlist.at(counter);
+       if(counter + 1 < dlist.length())
+       {
+           res += " : ";
+       }
+
+    }
+    this->ui->readOut->append(res);
 }
 
 
@@ -116,9 +132,9 @@ MainWindow::MainWindow(QWidget *parent) :
         port->worker->start(QThread::HighPriority);
 
 
+
         QObject::connect(port, SIGNAL(readyRead()), port, SLOT(serialRead()));
         QObject::connect(port, SIGNAL(readChannelFinished()), port, SLOT(sDoneReading()));
-
 
         MakeContact:
 
@@ -136,7 +152,7 @@ MainWindow::MainWindow(QWidget *parent) :
             port->setStopBits(QSerialPort::OneStop);
             port->setFlowControl(QSerialPort::NoFlowControl);
             QObject::connect(this, SIGNAL(writeToSonde(QString)), port, SLOT(serialWrite(QString)));
-            QObject::connect(port, SIGNAL(doneReading(QString)), this, SLOT(fun1(QString)));
+
         }
 
         else
@@ -165,8 +181,17 @@ MainWindow::MainWindow(QWidget *parent) :
         QMessageBox error;
         error.setText("Couldn't connect to serialport");
         error.exec();
-        //this->~MainWindow();
+        return;//this->~MainWindow();
     }
+
+    parser = new SerialParser();
+    parser->worker = new QThread;
+    parser->moveToThread(parser->worker);
+    parser->worker->start(QThread::HighPriority);
+
+    QObject::connect(parser, SIGNAL(calibrationResult(QString)), this, SLOT(calRes(QString)));
+
+    QObject::connect(port, SIGNAL(doneReading(QString)), parser, SLOT(parse(QString)));
 }
 
 
@@ -246,6 +271,16 @@ MainWindow::~MainWindow()
         }
         port->close();
         port = nullptr;
+    }
+    if(nullptr != parser)
+    {
+        if(parser->worker)
+        {
+            parser->worker->quit();
+            while(!parser->worker->isFinished()); // delay until worker finishes
+            delete parser->worker;
+        }
+        parser = nullptr;
     }
 
 }
@@ -451,51 +486,7 @@ void MainWindow::CalCommand(QString sensor, QString command, QString args = "", 
     }
     sendSerial(cal_command);
 
-    QString data = "_data:";
-    int start = buffer.toStdString().find(data.toStdString().c_str()) + data.length();
-    int len = buffer.indexOf('\r', start)-start;
-
-    if(0 < len)
-    {
-        data = QString::fromStdString(this->buffer.mid(start, len).toStdString());
-    }
-    else
-    {
-        data = "";
-    }/*God help me*/
-
-    //qDebug() << "Data : " << data;
-
-    //qDebug() << this->buffer.toStdString().c_str();
-    //qDebug() << this->buffer.length() << this->buffer.toStdString().find("Success");
-
-    if((this->buffer.length() >= this->buffer.toStdString().find("Success")) && (this->buffer.length() < this->buffer.toStdString().find("Fail")))
-    {
-        QString prefix = (sensor + " " + command + args);
-        if(data.isEmpty())
-        {
-            if(expectResult)
-            {
-                CalCommand(sensor, command, args, expectResult);
-                return;
-            }
-            ui->readOut->append(prefix + " : " + "Success");
-
-        }
-        else
-        {
-            ui->readOut->append(prefix + " : " + data);
-        }
-
-    }
-    else
-    {
-        //s.setText("Something went wrong");
-        //s.exec();
-        //Uncomment Later
-    }
-
-
+    /*Processing of response done elsewhere*/
 }
 
 void MainWindow::on_currSensor_currentIndexChanged(const QString &arg1)

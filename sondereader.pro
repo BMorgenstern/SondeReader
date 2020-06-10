@@ -17,8 +17,10 @@ TEMPLATE = app
 
 
 SOURCES += src/main.cpp\
+    src/commandresult.cpp \
         src/mainwindow.cpp \
     src/serialio.cpp \
+    src/serialparser.cpp \
     src/sondedata.cpp \
     src/sondemode.cpp \
     src/sensordetail.cpp \
@@ -26,7 +28,9 @@ SOURCES += src/main.cpp\
     src/serialreader.cpp
 
 HEADERS  += src/mainwindow.h \
+    src/commandresult.h \
     src/serialio.h \
+    src/serialparser.h \
     src/sondedata.h \
     src/sondemode.h \
     src/sensordetail.h \

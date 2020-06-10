@@ -6,6 +6,8 @@
 #include "sensordetail.h"
 #include "sensorspecific.h"
 #include "serialio.h"
+#include "serialparser.h"
+#include "commandresult.h"
 
 #include <QMainWindow>
 #include <QMessageBox>
@@ -39,6 +41,9 @@ public:
 private slots:
     void ReadSerial();
     void fun1(QString);
+
+    void calRes(QString);
+
     void on_serialSend_clicked();
 
     void on_readFrom_clicked();
@@ -157,7 +162,7 @@ private:
     static const qint16 SONDEID = 1027;
     static const qint16 ARDUNIOID = 9025;
     void CalCommand(QString,QString,QString,bool);
-    //sensor,command,args
+    SerialParser* parser;
     QList<SensorDetail> sensorNames;
     QList<SensorSpecific> sensorSpecificWidgets;
 

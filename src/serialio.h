@@ -36,3 +36,52 @@ signals:
 };
 
 #endif // SERIALIO_H
+
+#ifdef NOTDEFINED
+QString data = "_data:";
+data.indexOf("data");
+int start = buffer.toStdString().find(data.toStdString().c_str()) + data.length();
+int len = buffer.indexOf('\r', start)-start;
+
+if(0 < len)
+{
+    data = QString::fromStdString(this->buffer.mid(start, len).toStdString());
+}
+else
+{
+    data = "";
+}/*God help me*/
+
+//qDebug() << "Data : " << data;
+
+//qDebug() << this->buffer.toStdString().c_str();
+//qDebug() << this->buffer.length() << this->buffer.toStdString().find("Success");
+
+if((this->buffer.length() >= this->buffer.toStdString().find("Success")) && (this->buffer.length() < this->buffer.toStdString().find("Fail")))
+{
+    QString prefix = (sensor + " " + command + args);
+    if(data.isEmpty())
+    {
+        if(expectResult)
+        {
+            CalCommand(sensor, command, args, expectResult);
+            return;
+        }
+        ui->readOut->append(prefix + " : " + "Success");
+
+    }
+    else
+    {
+        ui->readOut->append(prefix + " : " + data);
+    }
+
+}
+else
+{
+    //s.setText("Something went wrong");
+    //s.exec();
+    //Uncomment Later
+}
+
+
+#endif
