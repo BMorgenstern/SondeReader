@@ -2,6 +2,7 @@
 #include <QApplication>
 
 #include "serialio.h"
+#include "serialmonitor.h"
 
 int main(int argc, char *argv[])
 {
@@ -21,7 +22,9 @@ int main(int argc, char *argv[])
         //w.newSession();
         //Same as writing newsession via serialmonitor
     }
-
+    SerialMonitor s;
+    s.initPort(w.getPort());
+    s.show();
     return a.exec();
 
 }

@@ -20,6 +20,7 @@ SOURCES += src/main.cpp\
     src/commandresult.cpp \
         src/mainwindow.cpp \
     src/serialio.cpp \
+    src/serialmonitor.cpp \
     src/serialparser.cpp \
     src/sondedata.cpp \
     src/sondemode.cpp \
@@ -30,6 +31,7 @@ SOURCES += src/main.cpp\
 HEADERS  += src/mainwindow.h \
     src/commandresult.h \
     src/serialio.h \
+    src/serialmonitor.h \
     src/serialparser.h \
     src/sondedata.h \
     src/sondemode.h \
@@ -37,7 +39,8 @@ HEADERS  += src/mainwindow.h \
     src/sensorspecific.h \
     src/serialreader.h
 
-FORMS    += src/mainwindow.ui
+FORMS    += src/mainwindow.ui \
+    src/serialmonitor.ui
 
 DISTFILES += \
     RefactoringNotes

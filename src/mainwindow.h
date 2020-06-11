@@ -8,6 +8,7 @@
 #include "serialio.h"
 #include "serialparser.h"
 #include "commandresult.h"
+#include "serialmonitor.h"
 
 #include <QMainWindow>
 #include <QMessageBox>
@@ -163,6 +164,7 @@ private:
     static const qint16 ARDUNIOID = 9025;
     void CalCommand(QString,QString,QString,bool);
     SerialParser* parser;
+    SerialMonitor* monitor;
     QList<SensorDetail> sensorNames;
     QList<SensorSpecific> sensorSpecificWidgets;
 
@@ -174,6 +176,10 @@ public:
     inline bool connected()
     {
         return nullptr != this->port;
+    }
+    inline SerialIO* getPort()
+    {
+        return this->port;
     }
     bool sendSerial(QString);
     void newSession();

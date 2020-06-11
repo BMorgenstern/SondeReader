@@ -261,6 +261,10 @@ void MainWindow::setTab(int index)
 MainWindow::~MainWindow()
 {
     delete ui;
+    if(nullptr != monitor)
+    {
+        delete this->monitor;
+    }
     if(nullptr != port)
     {
         if(port->worker)
