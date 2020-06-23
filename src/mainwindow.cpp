@@ -10,10 +10,50 @@
 //#define CONNECT_TO_ARDUINO
 
 
-void MainWindow::fun1(QString message)
+void MainWindow::getReading(QString message)
 {
-    qDebug() << message;
+    auto dlist = message.split('\r');
+    auto sensor = dlist.at(0);
+    auto val = dlist.at(1);
     //this->ui->readOut->append(sensor + " : " +retData);
+    this->setLCD(sensor, val);
+    /*
+     * if(0 == sensor.compare("EC"))
+    {
+        ui->ec_lcd->display(val);
+    }
+    else if(0 == sensor.compare("ph", Qt::CaseInsensitive))
+    {
+        ui->ph_lcd->display(val);
+    }
+    else if(0 == sensor.compare("SAT", Qt::CaseInsensitive))
+    {
+        ui->sat_lcd->display(val);
+    }
+    else if(0 == sensor.compare("sg", Qt::CaseInsensitive))
+    {
+        ui->sg_lcd->display(val);
+    }
+    else if(0 == sensor.compare("orp", Qt::CaseInsensitive))
+    {
+        ui->orp_lcd->display(val);
+    }
+    else if(0 == sensor.compare("sal", Qt::CaseInsensitive))
+    {
+        ui->sal_lcd->display(val);
+    }
+    else if(0 == sensor.compare("do", Qt::CaseInsensitive))
+    {
+        ui->do_lcd->display(val);
+    }
+    else if(0 == sensor.compare("rtd", Qt::CaseInsensitive))
+    {
+        ui->rtd_lcd->display(val);
+    }
+    else if(0 == sensor.compare("tds", Qt::CaseInsensitive))
+    {
+        ui->tds_lcd->display(val);
+    }*/
 }
 
 void MainWindow::calRes(QString result)
@@ -190,7 +230,7 @@ MainWindow::MainWindow(QWidget *parent) :
     parser->worker->start(QThread::HighPriority);
 
     QObject::connect(parser, SIGNAL(calibrationResult(QString)), this, SLOT(calRes(QString)));
-
+    QObject::connect(parser, SIGNAL(reading(QString)), this, SLOT(getReading(QString)));
     QObject::connect(port, SIGNAL(doneReading(QString)), parser, SLOT(parse(QString)));
 }
 
@@ -224,6 +264,24 @@ void MainWindow::setLCD(QString type, QString val)
     }
     else if(0 == type.compare("SAT", Qt::CaseInsensitive)){
         ui->sat_lcd->display(val);
+    }
+    else if(0 == type.compare("Temperature", Qt::CaseInsensitive)){
+        ui->temp_lcd->display(val);
+    }
+    else if(0 == type.compare("Altitude", Qt::CaseInsensitive)){
+        ui->alt_lcd->display(val);
+    }
+    else if(0 == type.compare("Depth", Qt::CaseInsensitive)){
+        ui->depth_lcd->display(val);
+    }
+    else if(0 == type.compare("Time", Qt::CaseInsensitive)){
+        ui->time_lcd->display(val);
+    }
+    else if(0 == type.compare("Date", Qt::CaseInsensitive)){
+        ui->date_lcd->display(val);
+    }
+    else if(0 == type.compare("Pressure", Qt::CaseInsensitive)){
+        ui->pres_lcd->display(val);
     }
 
 }
@@ -419,8 +477,8 @@ void MainWindow::ReadSerial()
 
 void MainWindow::on_serialSend_clicked()
 {
-    const char* data = ui->serialData->text().toStdString().c_str();
-    sendSerial(data);
+    //const char* data = ui->serialData->text().toStdString().c_str();
+    //sendSerial(data);
 }
 
 
@@ -809,57 +867,9 @@ void MainWindow::on_pushButton_clicked()
     sendSerial(time_interval.toStdString().c_str());
 }
 
-void MainWindow::on_temp_submit_clicked()
-{
-    QString time_interval;
-    time_interval = ui->temp_interval->text();
-    sendSerial(time_interval.toStdString().c_str());
-    qDebug() << time_interval;
-}
-
-void MainWindow::on_ph_submit_clicked()
-{
-    QString time_interval;
-    time_interval = ui->ph_interval->text();
-    sendSerial(time_interval.toStdString().c_str());
-    qDebug() << time_interval;
-}
-
-void MainWindow::on_ec_submit_clicked()
-{
-    QString time_interval;
-    time_interval = ui->ec_interval->text();
-    sendSerial(time_interval.toStdString().c_str());
-    qDebug() << time_interval;
-}
-
-void MainWindow::on_do_submit_clicked()
-{
-    QString time_interval;
-    time_interval = ui->do_interval->text();
-    sendSerial(time_interval.toStdString().c_str());
-    qDebug() << time_interval;
-}
-
-void MainWindow::on_orp_submit_clicked()
-{
-    QString time_interval;
-    time_interval = ui->orp_interval->text();
-    sendSerial(time_interval.toStdString().c_str());
-    qDebug() << time_interval;
-}
-
-void MainWindow::on_pressure_submit_clicked()
-{
-    QString time_interval;
-    time_interval = ui->pressure_interval->text();
-    sendSerial(time_interval.toStdString().c_str());
-    qDebug() << time_interval;
-}
-
 void MainWindow::on_pushButton_2_clicked()
 {
-    this->ReadSerial();
+
 }
 
 void MainWindow::on_freq_submit_clicked()

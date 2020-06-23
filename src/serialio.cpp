@@ -30,6 +30,14 @@ void SerialIO::serialRead()
         }
         this->setReading(true);
         buffer->append(this->readAll());
+        auto lines = buffer->split('\n');
+        for(int counter = 0; counter < lines.length() - 1; counter++)
+        {
+            emit doneReading(lines.at(counter));
+        }
+        *buffer = lines.last();
+        this->setReading(false);
+        /*
         if(buffer->endsWith('\n'))
         {
             //newline character specifies end of message
@@ -39,6 +47,7 @@ void SerialIO::serialRead()
             buffer->clear();
 
         }
+        */
 }
 void SerialIO::serialWrite(QString message)
 {

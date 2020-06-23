@@ -41,7 +41,7 @@ public:
 
 private slots:
     void ReadSerial();
-    void fun1(QString);
+    void getReading(QString);
 
     void calRes(QString);
 
@@ -128,18 +128,6 @@ private slots:
     void on_currSal_clicked();
 
     void on_pushButton_clicked();
-
-    void on_temp_submit_clicked();
-
-    void on_ph_submit_clicked();
-
-    void on_ec_submit_clicked();
-
-    void on_do_submit_clicked();
-
-    void on_orp_submit_clicked();
-
-    void on_pressure_submit_clicked();
 
     void on_pushButton_2_clicked();
 

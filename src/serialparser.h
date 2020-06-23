@@ -7,6 +7,7 @@
 class SerialParser : public QObject
 {
     Q_OBJECT
+    QString status;
 
 public:
     QThread* worker;
@@ -19,6 +20,7 @@ private slots:
 signals:
     void parsedResult(QString);
     void calibrationResult(QString);
+    void reading(QString);
 
 };
 

@@ -5,6 +5,7 @@
 SerialParser::SerialParser(QObject *parent) : QObject(parent)
 {
     worker = nullptr;
+    status = "";
 }
 
 void SerialParser::parse(QString message)
@@ -15,15 +16,40 @@ void SerialParser::parse(QString message)
 #endif
     QString retData;
 
-    auto datums = message.split(':');
-    if(-1 == message.indexOf("_data:") && 3 != datums.length())
+    if(-1 != message.indexOf("Success"))
     {
-        return;//not found
+        this->status = "Success";
     }
-    QString sensor = datums.at(0);
-    QString res = datums.at(2).mid(0, datums.at(2).indexOf('\r'));
-    QString status = datums.at(1).mid(1,datums.at(1).indexOf('\r')-1);
-    emit calibrationResult(sensor+'\r'+status+'\r'+res);
+    if(-1 != message.indexOf("Failed"))
+    {
+        this->status = "Failed";
+    }
+
+    auto datums = message.split("_data:");
+
+    if(2 == datums.length())
+    {
+        QString sensor = datums.at(0);
+        QString res = datums.at(1);
+        res.remove('\r');
+            //QString status = datums.at(1).mid(1,datums.at(1).indexOf('\r')-1);
+        if(!this->status.isEmpty())
+        {
+            emit calibrationResult(sensor+'\r'+this->status+'\r'+res);
+            this->status = "";
+        }
+        else
+        {
+            emit reading(sensor+'\r'+res);
+        }
+
+    }
+    //more options
+
+    //QString sensor = datums.at(0);
+    //QString res = datums.at(2).mid(0, datums.at(2).indexOf('\r'));
+    //QString status = datums.at(1).mid(1,datums.at(1).indexOf('\r')-1);
+    //emit calibrationResult(sensor+'\r'+status+'\r'+res);
 
 }
 

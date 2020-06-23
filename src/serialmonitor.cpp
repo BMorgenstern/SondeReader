@@ -32,3 +32,8 @@ void SerialMonitor::on_userSubmit_clicked()
     emit writeFromMonitor(this->ui->userInput->displayText());
     this->ui->userInput->clear();
 }
+
+void SerialMonitor::on_userInput_returnPressed()
+{
+    this->on_userSubmit_clicked();
+}

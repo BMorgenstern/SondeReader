@@ -22,6 +22,8 @@ private slots:
     void printToMonitor(QString); //connect to SerialIO's read signal
     void on_userSubmit_clicked();
 
+    void on_userInput_returnPressed();
+
 private:
     Ui::SerialMonitor *ui;
     SerialIO* port;

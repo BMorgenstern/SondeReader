@@ -33,102 +33,16 @@
      <attribute name="title">
       <string>Data</string>
      </attribute>
-     <widget class="QLineEdit" name="serialData">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>300</y>
-        <width>113</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QTimeEdit" name="time">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>250</y>
-        <width>118</width>
-        <height>27</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="serialSend">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>300</y>
-        <width>121</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Send to Arduino</string>
-      </property>
-     </widget>
      <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
         <x>29</x>
         <y>19</y>
-        <width>351</width>
-        <height>181</height>
+        <width>411</width>
+        <height>411</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="1">
-        <widget class="QLCDNumber" name="sg_lcd">
-         <property name="toolTip">
-          <string>SG</string>
-         </property>
-         <property name="digitCount">
-          <number>7</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLCDNumber" name="ph_lcd">
-         <property name="toolTip">
-          <string>pH</string>
-         </property>
-         <property name="digitCount">
-          <number>7</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLCDNumber" name="tds_lcd">
-         <property name="toolTip">
-          <string>TDS</string>
-         </property>
-         <property name="digitCount">
-          <number>7</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLCDNumber" name="sal_lcd">
-         <property name="toolTip">
-          <string>SAL</string>
-         </property>
-         <property name="digitCount">
-          <number>7</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QLCDNumber" name="orp_lcd">
-         <property name="toolTip">
-          <string>ORP</string>
-         </property>
-         <property name="digitCount">
-          <number>7</number>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="1">
         <widget class="QLCDNumber" name="sat_lcd">
          <property name="toolTip">
@@ -149,8 +63,8 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="2">
-        <widget class="QLCDNumber" name="rtd_lcd">
+       <item row="3" column="1">
+        <widget class="QLCDNumber" name="pres_lcd">
          <property name="mouseTracking">
           <bool>false</bool>
          </property>
@@ -187,30 +101,153 @@
          </property>
         </widget>
        </item>
+       <item row="2" column="0">
+        <widget class="QLCDNumber" name="sal_lcd">
+         <property name="toolTip">
+          <string>SAL</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLCDNumber" name="sg_lcd">
+         <property name="toolTip">
+          <string>SG</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLCDNumber" name="orp_lcd">
+         <property name="toolTip">
+          <string>ORP</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLCDNumber" name="tds_lcd">
+         <property name="toolTip">
+          <string>TDS</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLCDNumber" name="date_lcd">
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>RTD</string>
+         </property>
+         <property name="whatsThis">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLCDNumber" name="time_lcd">
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>RTD</string>
+         </property>
+         <property name="whatsThis">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLCDNumber" name="rtd_lcd">
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>RTD</string>
+         </property>
+         <property name="whatsThis">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLCDNumber" name="ph_lcd">
+         <property name="toolTip">
+          <string>pH</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLCDNumber" name="temp_lcd">
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>RTD</string>
+         </property>
+         <property name="whatsThis">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLCDNumber" name="alt_lcd">
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>RTD</string>
+         </property>
+         <property name="whatsThis">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLCDNumber" name="depth_lcd">
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>RTD</string>
+         </property>
+         <property name="whatsThis">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="digitCount">
+          <number>7</number>
+         </property>
+        </widget>
+       </item>
       </layout>
-     </widget>
-     <widget class="QPushButton" name="readFrom">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>250</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Get Data</string>
-      </property>
-     </widget>
-     <widget class="QTextBrowser" name="dataReadOut">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>350</y>
-        <width>351</width>
-        <height>101</height>
-       </rect>
-      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
@@ -1295,136 +1332,94 @@
        <string>Read</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QLabel" name="dude">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>120</y>
-        <width>457</width>
-        <height>196</height>
+        <x>10</x>
+        <y>107</y>
+        <width>151</width>
+        <height>27</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>Temperature </string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_8">
-           <property name="text">
-            <string>Electrical Conductivity</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_10">
-           <property name="text">
-            <string>Oxidation Reduction Potential</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_7">
-           <property name="text">
-            <string>pH</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_9">
-           <property name="text">
-            <string>Dissolved Oxygen</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_11">
-           <property name="text">
-            <string>Pressure</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <widget class="QLineEdit" name="temp_interval"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="ec_interval"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="orp_interval"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="ph_interval"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="do_interval"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="pressure_interval"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_6">
-         <item>
-          <widget class="QPushButton" name="temp_submit">
-           <property name="text">
-            <string>Submit</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="ec_submit">
-           <property name="text">
-            <string>Submit</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="orp_submit">
-           <property name="text">
-            <string>Submit</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="ph_submit">
-           <property name="text">
-            <string>Submit</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="do_submit">
-           <property name="text">
-            <string>Submit</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pressure_submit">
-           <property name="text">
-            <string>Submit</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
+      <property name="text">
+       <string>Temperature </string>
+      </property>
      </widget>
-     <zorder>layoutWidget</zorder>
-     <zorder>label_5</zorder>
-     <zorder>textBrowser_3</zorder>
-     <zorder>pushButton_2</zorder>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>206</y>
+        <width>151</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>pH</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>173</y>
+        <width>151</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Oxidation Reduction Potential</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>239</y>
+        <width>151</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dissolved Oxygen</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>272</y>
+        <width>151</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pressure</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>151</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Electrical Conductivity</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="cmonalready">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>110</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_12">
      <attribute name="title">
